@@ -32,15 +32,15 @@ public class ArticleController {
         if(article.getDate() == null){
             date.setText("Can not retrieve published date");
         }else{
-            date.setText(article.getDate().toString());
+            date.setText(article.getTimePassed());
         }
 
 
         if (article.getDate() == null){
-            currentArticle = new Article(article.getTitle(), article.getSource(), article.getThumbnail_url(), article.getContent() );
+            currentArticle = new Article(article.getTitle(), article.getSource(), article.getThumbnail_url(), article.getContent(), article.getCategory() );
         }
         else {
-            currentArticle = new Article(article.getTitle(), article.getSource(), article.getThumbnail_url(), article.getContent(), article.getDate() );
+            currentArticle = new Article(article.getTitle(), article.getSource(), article.getThumbnail_url(), article.getContent(), article.getDate(), article.getCategory() );
         }
 
     }

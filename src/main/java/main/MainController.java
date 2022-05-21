@@ -136,6 +136,14 @@ public class MainController implements Initializable {
             "https://vtc.vn/rss/the-gioi.rss"
     };
 
+    String[] otherRSS ={
+            "https://tuoitre.vn/rss/xe.rss",
+            "https://vnexpress.net//rss/oto-xe-may.rss",
+            "https://www.doisongphapluat.com/rss/the-gioi-xe.rss",
+            "https://tienphong.vn/rss/xe-113.rss",
+            "https://vtc.vn/rss/oto-xe-may.rss"
+    };
+
 
     String currentCategoryChosen = "Newest";
     String currentPage = "1";
@@ -168,25 +176,25 @@ public class MainController implements Initializable {
         button.setStyle("-fx-background-color: #3781a4;");
         currentCategoryChosen = button.getText();
         if(button.getText().equals("Newest")){
-            renderArticles(presentArticleMethod.presentArticles(newestRSS[Integer.parseInt(currentPage) - 1]), currentPage);
+            renderArticles(presentArticleMethod.presentArticles(newestRSS[Integer.parseInt(currentPage) - 1], "Newest"), currentPage);
         }else if(button.getText().equals("World")){
-            renderArticles(presentArticleMethod.presentArticles(worldRSS[Integer.parseInt(currentPage) - 1]), currentPage);
+            renderArticles(presentArticleMethod.presentArticles(worldRSS[Integer.parseInt(currentPage) - 1], "World"), currentPage);
         }else if(button.getText().equals("Covid")){
-            renderArticles(presentArticleMethod.presentArticles(healthRSS[Integer.parseInt(currentPage) - 1]), currentPage);
+            renderArticles(presentArticleMethod.presentArticles(healthRSS[Integer.parseInt(currentPage) - 1], "Covid"), currentPage);
         }else if(button.getText().equals("Business")){
-            renderArticles(presentArticleMethod.presentArticles(businessRSS[Integer.parseInt(currentPage)- 1]), currentPage);
+            renderArticles(presentArticleMethod.presentArticles(businessRSS[Integer.parseInt(currentPage)- 1], "Business"), currentPage);
         }else if(button.getText().equals("Health")){
-            renderArticles(presentArticleMethod.presentArticles(healthRSS[Integer.parseInt(currentPage) - 1]), currentPage);
+            renderArticles(presentArticleMethod.presentArticles(healthRSS[Integer.parseInt(currentPage) - 1], "Health"), currentPage);
         }else if(button.getText().equals("Sports")){
-            renderArticles(presentArticleMethod.presentArticles(sportRSS[Integer.parseInt(currentPage) - 1]), currentPage);
+            renderArticles(presentArticleMethod.presentArticles(sportRSS[Integer.parseInt(currentPage) - 1], "Sports"), currentPage);
         }else if(button.getText().equals("Technology")){
-            renderArticles(presentArticleMethod.presentArticles(techRSS[Integer.parseInt(currentPage) - 1]), currentPage);
+            renderArticles(presentArticleMethod.presentArticles(techRSS[Integer.parseInt(currentPage) - 1], "Technology"), currentPage);
         }else if(button.getText().equals("Politics")){
-            renderArticles(presentArticleMethod.presentArticles(politicRSS[Integer.parseInt(currentPage) - 1]), currentPage);
+            renderArticles(presentArticleMethod.presentArticles(politicRSS[Integer.parseInt(currentPage) - 1], "Politics"), currentPage);
         } else if(button.getText().equals("Entertainment")){
-            renderArticles(presentArticleMethod.presentArticles(entertainmentRSS[Integer.parseInt(currentPage) - 1]), currentPage);
+            renderArticles(presentArticleMethod.presentArticles(entertainmentRSS[Integer.parseInt(currentPage) - 1], "Entertainment"), currentPage);
         }else if(button.getText().equals("Others")){
-            renderArticles(presentArticleMethod.presentArticles(worldRSS[Integer.parseInt(currentPage) - 1]), currentPage);
+            renderArticles(presentArticleMethod.presentArticles(otherRSS[Integer.parseInt(currentPage) - 1], "Others"), currentPage);
         }
 
     }
@@ -201,23 +209,23 @@ public class MainController implements Initializable {
             currentPage = newTab.getText();
             try {
                 if(currentCategoryChosen.equals("Newest")){
-                    renderArticles(presentArticleMethod.presentArticles(newestRSS[Integer.parseInt(newTab.getText()) - 1]), newTab.getText());
+                    renderArticles(presentArticleMethod.presentArticles(newestRSS[Integer.parseInt(newTab.getText()) - 1],"Newest" ), newTab.getText());
                 }else if(currentCategoryChosen.equals("World")){
-                    renderArticles(presentArticleMethod.presentArticles(worldRSS[Integer.parseInt(newTab.getText())- 1]), newTab.getText());
+                    renderArticles(presentArticleMethod.presentArticles(worldRSS[Integer.parseInt(newTab.getText())- 1], "World"), newTab.getText());
                 }else if(currentCategoryChosen.equals("Covid")){
-                    renderArticles(presentArticleMethod.presentArticles(healthRSS[Integer.parseInt(newTab.getText()) - 1]), newTab.getText());
+                    renderArticles(presentArticleMethod.presentArticles(healthRSS[Integer.parseInt(newTab.getText()) - 1], "Covid"), newTab.getText());
                 } else if(currentCategoryChosen.equals("Business")){
-                    renderArticles(presentArticleMethod.presentArticles(businessRSS[Integer.parseInt(newTab.getText()) - 1]), newTab.getText());
+                    renderArticles(presentArticleMethod.presentArticles(businessRSS[Integer.parseInt(newTab.getText()) - 1], "Business"), newTab.getText());
                 }else if(currentCategoryChosen.equals("Health")){
-                    renderArticles(presentArticleMethod.presentArticles(healthRSS[Integer.parseInt(newTab.getText()) - 1]), newTab.getText());
+                    renderArticles(presentArticleMethod.presentArticles(healthRSS[Integer.parseInt(newTab.getText()) - 1], "Health"), newTab.getText());
                 }else if(currentCategoryChosen.equals("Sports")){
-                    renderArticles(presentArticleMethod.presentArticles(sportRSS[Integer.parseInt(newTab.getText()) - 1]), newTab.getText());
+                    renderArticles(presentArticleMethod.presentArticles(sportRSS[Integer.parseInt(newTab.getText()) - 1], "Sports"), newTab.getText());
                 }else if(currentCategoryChosen.equals("Politics")){
-                    renderArticles(presentArticleMethod.presentArticles(politicRSS[Integer.parseInt(newTab.getText()) - 1]), currentPage);
+                    renderArticles(presentArticleMethod.presentArticles(politicRSS[Integer.parseInt(newTab.getText()) - 1], "Politics"), currentPage);
                 } else if(currentCategoryChosen.equals("Entertainment")){
-                    renderArticles(presentArticleMethod.presentArticles(entertainmentRSS[Integer.parseInt(newTab.getText()) - 1]), currentPage);
+                    renderArticles(presentArticleMethod.presentArticles(entertainmentRSS[Integer.parseInt(newTab.getText()) - 1], "Entertainment"), currentPage);
                 }else if(currentCategoryChosen.equals("Others")){
-                    renderArticles(presentArticleMethod.presentArticles(worldRSS[Integer.parseInt(newTab.getText()) - 1]), currentPage);
+                    renderArticles(presentArticleMethod.presentArticles(otherRSS[Integer.parseInt(newTab.getText()) - 1], "Others"), currentPage);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -226,7 +234,7 @@ public class MainController implements Initializable {
 
         try {
             Newest.setStyle("-fx-background-color: #3781a4;");
-            renderArticles(presentArticleMethod.presentArticles(newestRSS[1]), "1");
+            renderArticles(presentArticleMethod.presentArticles(newestRSS[1], "Newest"), "1");
         } catch (Exception e) {
             e.printStackTrace();
         }

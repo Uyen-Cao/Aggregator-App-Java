@@ -3,6 +3,8 @@ package models;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import static com.sun.javafx.css.FontFaceImpl.FontFaceSrcType.URL;
+
 public class Article {
 
     private String title;
@@ -11,20 +13,18 @@ public class Article {
     private Date date;
     private String timePassed;
     private String content;
+    private String category;
 
 
-    public Article(String title, String source, String thumbnail_url, String content, Date date) {
 
-//        title = input.getTitle();
-//        URL = input.getLink();
-//        this.category = category;
-//        date = input.getPublishedDate().toString();
+    public Article(String title, String source, String thumbnail_url, String content, Date date, String category) {
 
         this.title = title;
         this.source = source;
         this.thumbnail_url = thumbnail_url;
         this.date = date;
         this.content= content;
+        this.category = category;
 
         Date currentDate = new Date();
 
@@ -35,13 +35,14 @@ public class Article {
         long minuteDiff = timeDiff - 1440*(timeDiff/1440) - hourDiff*60;
         timePassed = (timeDiff/1440) + " days, " + hourDiff + " hours, " + minuteDiff + " minutes";
     }
-    public Article(String title, String source, String thumbnail_url, String content) {
+    public Article(String title, String source, String thumbnail_url, String content, String category) {
         this.title = title;
         this.source = source;
         this.thumbnail_url = thumbnail_url;
         this.date = null;
         this.timePassed = "Can not Retrieve Publication Date";
         this.content= content;
+        this.category = category;
     }
 
     public Article(){
@@ -51,6 +52,15 @@ public class Article {
         this.date = null;
     }
 
+    @Override
+    public String toString() {
+        return "Date:      " + date +
+                "\nTitle:     " + title +
+                "\nlink:      " + source +
+                "\nImg Link:  " + thumbnail_url +
+                "\nTime Passed: " + timePassed +
+                "\nContent:   " + content;
+    }
 
     public String getTitle() {
         return title;
@@ -98,5 +108,13 @@ public class Article {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
