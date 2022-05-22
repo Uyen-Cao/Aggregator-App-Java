@@ -198,6 +198,8 @@ public class MainController implements Initializable {
     public void initialize(URL location, ResourceBundle resources){
 
         myTabPane.getSelectionModel().selectedItemProperty().addListener((ov, oldTab, newTab) -> {
+            System.out.println(currentPage);
+            System.out.println(currentCategoryChosen);
             currentPage = newTab.getText();
             try {
                 if(currentCategoryChosen.equals("Newest")){
@@ -218,6 +220,8 @@ public class MainController implements Initializable {
                     renderArticles(presentArticleMethod.presentArticles(entertainmentRSS[Integer.parseInt(newTab.getText()) - 1]), currentPage);
                 }else if(currentCategoryChosen.equals("Others")){
                     renderArticles(presentArticleMethod.presentArticles(worldRSS[Integer.parseInt(newTab.getText()) - 1]), currentPage);
+                }else if(currentCategoryChosen.equals("Technology")){
+                    renderArticles(presentArticleMethod.presentArticles(techRSS[Integer.parseInt(newTab.getText()) - 1]), currentPage);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
